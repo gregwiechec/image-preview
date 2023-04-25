@@ -1,0 +1,81 @@
+.image-tooltip .dijitTooltipContainer {
+    padding: 16px 16px 8px 8px;
+}
+
+.image-tooltip .close-button {
+    position: absolute;
+    top: 0;
+    right: 16px;
+}
+
+.image-tooltip-container {
+    height: 400px;
+}
+
+.image-tooltip-container .image-container {
+    width: 400px;
+    display: inline-block;
+    background-color: hsl(0,0%,93%);
+}
+
+.image-tooltip-container .image-container > div {
+    display: table-cell;
+    height: 400px;
+    vertical-align: middle;
+}
+
+.image-tooltip-container .image-container img {
+    max-width: 400px;
+    max-height: 400px;
+}
+
+.image-tooltip-container .image-info {
+    display: inline-block;
+    height: 100%;
+    padding-left: 9px;
+    vertical-align: top;
+    max-width: 200px;
+}
+
+.image-tooltip-container .image-info table {
+    height: calc(100% - 120px);
+    overflow-y: auto;
+    display: block;
+}
+
+.image-tooltip-container .image-info tr td {
+    padding-bottom: 8px;
+}
+
+.image-tooltip-container .image-info tr td .epi-functionLink {
+    font-size: 14px;
+}
+
+.image-tooltip-container .image-info tr td:first-child {
+    font-weight: bold;
+    padding-right: 4px;
+}
+
+.image-tooltip-container .image-info tr.main-properties-end td {
+    border-bottom: 1px solid #c0c0c0;
+}
+
+.image-tooltip-container .image-info tr.first-property td {
+    padding-top: 8px
+}
+
+.image-tooltip-container .image-info .footer {
+    border-top: 1px solid #c0c0c0;
+}
+
+.image-tooltip-container .image-info .footer h3 {
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+    line-height: 20px;
+}
+
+.image-tooltip-container .image-info .footer > div {
+    height: 100px;
+    overflow-y: auto;
+}
