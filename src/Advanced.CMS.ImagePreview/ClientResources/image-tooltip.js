@@ -1,4 +1,4 @@
-﻿define([
+define([
         "dojo/_base/declare",
         "dojo/date/locale",
         "dojo/topic",
@@ -100,6 +100,7 @@
                         return;
                     }
                     this.info.appendChild(this._createInfoNode("Copyright", contentDetails.properties.copyright, "first-property"));
+                    this.info.appendChild(this._createInfoNode("Alt", contentDetails.properties.altText));
                 }.bind(this));
 
                 when(this._getReferencesStore().query({ ids: [content.contentLink] })).then(function (result) {

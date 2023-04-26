@@ -1,4 +1,4 @@
-using EPiServer.Core;
+﻿using EPiServer.Core;
 using EPiServer.DataAnnotations;
 using EPiServer.Framework.DataAnnotations;
 
@@ -15,5 +15,7 @@ namespace AlloyTemplates.Models.Media
         /// The copyright.
         /// </value>
         public virtual string Copyright { get; set; }
+
+        public virtual string AltText { get; set; }
     }
 }

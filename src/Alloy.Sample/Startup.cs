@@ -18,6 +18,7 @@ using EPiServer.Cms.Shell;
 using EPiServer.Cms.UI.Admin;
 using EPiServer.Cms.UI.VisitorGroups;
 using EPiServer.Cms.Shell.UI;
+using EPiServer.Framework.Web.Resources;
 
 
 namespace EPiServer.Templates.Alloy.Mvc

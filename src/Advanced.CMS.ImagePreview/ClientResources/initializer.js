@@ -92,14 +92,18 @@ define([
 
     var originalOnSelect = ContentList.prototype._onSelect;
     ContentList.prototype._onSelect = function () {
-        this.clearTooltip();
+        if (this.clearTooltip) {
+            this.clearTooltip();
+        }
         return originalOnSelect.apply(this, arguments);
     };
     ContentList.prototype._onSelect.nom = "_onSelect";
 
     var originalSetQueryAttr = ContentList.prototype._setQueryAttr;
     ContentList.prototype._setQueryAttr = function () {
-        this.clearTooltip();
+        if (this.clearTooltip) {
+            this.clearTooltip();
+        }
         return originalSetQueryAttr.apply(this, arguments);
     };
     ContentList.prototype._onSelect.nom = "_setQueryAttr";
