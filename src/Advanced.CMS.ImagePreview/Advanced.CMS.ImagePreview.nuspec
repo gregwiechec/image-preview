@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
-    <id>Alloy.MediaReport</id>
+    <id>Advanced.CMS.ImagePreview</id>
     <version>$PackageVersion$</version>
-    <title>Alloy.MediaReport</title>
+    <title>Advanced.CMS.ImagePreview</title>
     <authors>Grzegorz Wiecheć</authors>
     <owners>Grzegorz Wiecheć</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Admin Mode plugin for displaying media statistics</description>
+    <description>Edit mode plugin for displaying images preview in Assets pane</description>
     <releaseNotes/>
-    <copyright>Copyright 2022</copyright>
-    <tags>episerver optimizely media</tags>
+    <copyright>Copyright 2023</copyright>
+    <tags>episerver optimizely media images</tags>
     <license type="expression">MIT</license>
-    <projectUrl>https://github.com/gregwiechec/media-report</projectUrl>
+    <projectUrl>https://github.com/gregwiechec/image-preview</projectUrl>
     <dependencies>
       <group targetFramework="net6.0">
         <dependency id="EPiServer.CMS.UI.Core" version="[$CmsUIVersion$, $CmsUINextMajorVersion$)" />
@@ -20,16 +20,16 @@
       </group>
     </dependencies>
     <contentFiles>
-      <files include="any/any/modules/_protected/Alloy.MediaReport/Alloy.MediaReport.zip" buildAction="None" copyToOutput="true"  />
+      <files include="any/any/modules/_protected/Advanced.CMS.ImagePreview/Advanced.CMS.ImagePreview.zip" buildAction="None" copyToOutput="true"  />
     </contentFiles>
   </metadata>
   <files>
-    <file src="src\MediaReport\bin\$configuration$\Alloy.MediaReport.dll" target="lib\net6.0\" />
+    <file src="src\Advanced.CMS.ImagePreview\bin\$configuration$\Advanced.CMS.ImagePreview.dll" target="lib\net6.0\" />
 
-    <file src="out\Alloy.MediaReport\Alloy.MediaReport.zip" target="contentFiles\any\any\modules\_protected\Alloy.MediaReport\" />
+    <file src="out\Advanced.CMS.ImagePreview\Advanced.CMS.ImagePreview.zip" target="contentFiles\any\any\modules\_protected\Advanced.CMS.ImagePreview\" />
 
-    <file src="build\CopyZipFiles.targets" target="build\net6.0\Alloy.MediaReport.targets" />
+    <file src="build\CopyZipFiles.targets" target="build\net6.0\Advanced.CMS.ImagePreview.targets" />
 	
-	<file src="src\MediaReport\readme.txt" target="" />
+	<file src="src\Advanced.CMS.ImagePreview\readme.txt" target="" />
   </files>
 </package>

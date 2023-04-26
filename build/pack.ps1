@@ -30,13 +30,13 @@ Get-ChildItem -Path out\ -Exclude dtk | Remove-Item -Recurse -Force
 
 #copy assets approval reviews
 Copy-Item -Path src\Advanced.CMS.ImagePreview\ClientResources\ -Destination out\Advanced.CMS.ImagePreview\$version\ClientResources -recurse -Force
-Copy-Item src\Advanced.CMS.ImagePreview\module.config out\Alloy.MediaReport
-((Get-Content -Path out\Advanced.CMS.ImagePreview\module.config -Raw).TrimEnd() -Replace '=""', "=`"$version`"" ) | Set-Content -Path out\Alloy.MediaReport\module.config
+Copy-Item src\Advanced.CMS.ImagePreview\module.config out\Advanced.CMS.ImagePreview
+((Get-Content -Path out\Advanced.CMS.ImagePreview\module.config -Raw).TrimEnd() -Replace '=""', "=`"$version`"" ) | Set-Content -Path out\Advanced.CMS.ImagePreview\module.config
 Set-Location $workingDirectory\out\Advanced.CMS.ImagePreview
 Start-Process -NoNewWindow -Wait -FilePath $zip -ArgumentList "a", "Advanced.CMS.ImagePreview.zip", "$version", "module.config"
 Set-Location $workingDirectory
 
 # Packaging public packages
-dotnet pack -c $configuration /p:PackageVersion=$version /p:CmsUIVersion=$cmsUIVersion /p:CmsUINextMajorVersion=$cmsUINextMajorVersion /p:RuntimeVersion=$runtimeVersion /p:RuntimeNextMajorVersion=$runtimeNextMajorVersion src/MediaReport.sln
+dotnet pack -c $configuration /p:PackageVersion=$version /p:CmsUIVersion=$cmsUIVersion /p:CmsUINextMajorVersion=$cmsUINextMajorVersion /p:RuntimeVersion=$runtimeVersion /p:RuntimeNextMajorVersion=$runtimeNextMajorVersion src/Advanced.CMS.ImagePreview.sln
 
 Pop-Location

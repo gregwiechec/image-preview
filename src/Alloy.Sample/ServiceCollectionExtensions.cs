@@ -13,7 +13,7 @@ namespace Alloy.Sample
             var uiSolutionFolder = Path.Combine(applicationRootPath, uiSolutionRelativePath);
             services.Configure<CompositeFileProviderOptions>(c =>
             {
-                c.BasePathFileProviders.Add(new MappingPhysicalFileProvider("/EPiServer/Alloy.MediaReport", string.Empty, Path.Combine(uiSolutionFolder, @"src\MediaReport")));
+                c.BasePathFileProviders.Add(new MappingPhysicalFileProvider("/EPiServer/Advanced.CMS.ImagePreview", string.Empty, Path.Combine(uiSolutionFolder, @"src\Advanced.CMS.ImagePreview")));
             });
             return services;
         }

@@ -5,9 +5,9 @@
         <Company>Grzegorz Wiechec</Company>
         <Authors>Grzegorz Wiechec</Authors>
         <Copyright>© 2019-2023 Grzegorz Wiechec</Copyright>
-        <PackageProjectUrl>https://github.com/gregwiechec/media-report</PackageProjectUrl>
-        <PackageLicenseUrl>https://github.com/gregwiechec/media-report/blob/master/LICENSE</PackageLicenseUrl>
-        <PackageTags>episerver optimizely media</PackageTags>
+        <PackageProjectUrl>https://github.com/gregwiechec/image-preview</PackageProjectUrl>
+        <PackageLicenseUrl>https://github.com/gregwiechec/image-preview/blob/master/LICENSE</PackageLicenseUrl>
+        <PackageTags>episerver optimizely media images</PackageTags>
         <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
         <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
         <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
