@@ -95,13 +95,19 @@ define([
                 })));
                 this.info.appendChild(this._createInfoNode("Changed by", content.changedBy, "main-properties-end"));
 
-                when(this._getStore().get(content.contentLink)).then(function (contentDetails) {
-                    if (this._destroyed) {
-                        return;
-                    }
-                    this.info.appendChild(this._createInfoNode("Copyright", contentDetails.properties.copyright, "first-property"));
-                    this.info.appendChild(this._createInfoNode("Alt", contentDetails.properties.altText));
-                }.bind(this));
+                if (this.additionalProperties) {
+                    when(this._getStore().get(content.contentLink)).then(function (contentDetails) {
+                        if (this._destroyed) {
+                            return;
+                        }
+                        var index = 0;
+                        this.additionalProperties.forEach(function (additionalProperty) {
+                            var cssClass = index === 0 ? "first-property" : undefined;
+                            this.info.appendChild(this._createInfoNode(additionalProperty.value, contentDetails.properties[additionalProperty.key],
+                                cssClass, undefined, true));
+                        }, this);
+                    }.bind(this));
+                }
 
                 when(this._getReferencesStore().query({ ids: [content.contentLink] })).then(function (result) {
                     if (result.length === 0 || result[0].references.length === 0) {
@@ -128,7 +134,7 @@ define([
                 }.bind(this));
             },
 
-            _createInfoNode: function (name, value, rowClass, link) {
+            _createInfoNode: function (name, value, rowClass, link, valueAsTitle) {
                 var tr = document.createElement("tr");
                 if (rowClass) {
                     tr.classList.add(rowClass);
@@ -147,7 +153,14 @@ define([
                     anchor.href = link;
                     tdValue.appendChild(anchor);
                 } else {
-                    tdValue.innerText = value;
+                    if (valueAsTitle) {
+                        var span = document.createElement("span");
+                        span.title = value;
+                        span.innerHTML = value;
+                        tdValue.appendChild(span);
+                    } else {
+                        tdValue.innerText = value;
+                    }
                 }
                 tr.appendChild(tdValue);
 

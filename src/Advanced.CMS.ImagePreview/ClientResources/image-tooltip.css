@@ -19,9 +19,10 @@
 }
 
 .image-tooltip-container .image-container > div {
-    display: table-cell;
+    display: flex;
     height: 400px;
-    vertical-align: middle;
+    align-items: center;
+    justify-content: center;
 }
 
 .image-tooltip-container .image-container img {
@@ -41,10 +42,16 @@
     height: calc(100% - 120px);
     overflow-y: auto;
     display: block;
+    width: 100%;
 }
 
 .image-tooltip-container .image-info tr td {
     padding-bottom: 8px;
+    vertical-align: top;
+    width: 50%;
+    max-width: 110px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .image-tooltip-container .image-info tr td .epi-functionLink {

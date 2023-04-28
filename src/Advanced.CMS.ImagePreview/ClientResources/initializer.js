@@ -29,6 +29,8 @@ define([
 
     ImageTooltip
 ) {
+    var additionalProperties;
+
     var originalGetBaseSettings = ContentList.prototype._getBaseSettings;
     ContentList.prototype._getBaseSettings = function () {
         var self = this;
@@ -54,7 +56,8 @@ define([
             function showTooltip () {
                 self._imageTooltip = new ImageTooltip({
                     imageUrl: value.publicUrl,
-                    content: value
+                    content: value,
+                    additionalProperties: additionalProperties
                 });
 
                 self._imageTooltipContainer = new TooltipDialog({
@@ -109,6 +112,8 @@ define([
     ContentList.prototype._onSelect.nom = "_setQueryAttr";
 
     return declare([_Module], {
-        //initialize: function() { }
+        initialize: function () {
+            additionalProperties = this._settings.additionalProperties
+        }
     });
 });

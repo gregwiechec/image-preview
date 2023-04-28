@@ -1,8 +1,10 @@
-﻿using EPiServer.Framework;
+﻿using Advanced.CMS.ImagePreview;
+using AlloyTemplates.Models.Media;
+using EPiServer.Framework;
 using EPiServer.Framework.Initialization;
 using EPiServer.ServiceLocation;
 using EPiServer.Web;
-using EPiServer.Core;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace AlloyTemplates.Business.Initialization
 {
@@ -13,15 +15,15 @@ namespace AlloyTemplates.Business.Initialization
         {
             context.ConfigurationComplete += (o, e) =>
             {
-                //context.Services.AddTransient<IMediaHierarchyRootResolver, CustomMediaHierarchyRootResolver>();
-                //context.Services.AddTransient<IMediaLoaderFilter, CustomMediaLoaderFilter>();
+                context.Services.Configure<ImagePreviewOptions>(o =>
+                {
+                    o.AdditionalProperties = new[] {nameof(ImageFile.Copyright), nameof(ImageFile.AltText)};
+                });
             };
         }
 
         public void Initialize(InitializationEngine context) { }
 
         public void Uninitialize(InitializationEngine context) { }
-
-        public void Preload(string[] parameters){}
     }
 }
