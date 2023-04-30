@@ -18,3 +18,33 @@ public class Startup
     }
     ...
 }
+
+
+Configuring additional properties
+=================================
+
+Ton configure addtional properties displayed in the tooltip use Advanced.CMS.ImagePreview.ImagePreviewOptions
+
+public class Startup
+{
+    ...
+    public void ConfigureServices(IServiceCollection services)
+    {
+        services.Configure<ImagePreviewOptions>(o =>
+        {
+            o.AdditionalProperties = new[] {nameof(ImageFile.Copyright), nameof(ImageFile.AltText)};
+        });
+    ...
+}
+
+Translating additional properties
+=================================
+
+To translate addtional properties use language files
+
+<imagepreview>
+    <property>
+        <alttext>Alt<//alttext>
+    </property>
+</imagepreview>
+
