@@ -36,16 +36,8 @@ define([
         var self = this;
         self._imageTooltipContainer = null;
         self._imageTooltip = null;
-        self.clearTooltip = function() {
+        self.closeTooltip = function() {
             popup.close(self._imageTooltipContainer);
-            if (self._imageTooltipContainer) {
-                self._imageTooltipContainer.destroyRecursive();
-                self._imageTooltipContainer = null;
-            }
-            if (self._imageTooltip) {
-                self._imageTooltip.destroyRecursive();
-                self._imageTooltip = null;
-            }
         }
 
         var settings = originalGetBaseSettings.apply(this, arguments);
@@ -53,26 +45,31 @@ define([
         settings.formatters[0] = function(value, object, node, options) {
             var result = originalFormatter.apply(this, arguments);
 
-            function showTooltip () {
-                self._imageTooltip = new ImageTooltip({
-                    imageUrl: value.publicUrl,
-                    content: value,
-                    additionalProperties: additionalProperties
-                });
+            function showTooltip() {
+                if (!self._imageTooltip) {
+                    self._imageTooltip = new ImageTooltip({
+                        additionalProperties: additionalProperties,
+                        imageUrl: value.publicUrl,
+                        content: value,
+                    });
+                    self.own(self._imageTooltip);
 
-                self._imageTooltipContainer = new TooltipDialog({
-                    label: "",
-                    content: self._imageTooltip,
-                    closable: true,
-                    onMouseLeave: function () {
-                        popup.close(self._tooltip);
-                    }
-                });
-                self._imageTooltipContainer.domNode.classList.add("image-tooltip");
-                self._imageTooltipContainer.own(self._imageTooltip);
+                    self._imageTooltipContainer = new TooltipDialog({
+                        content: self._imageTooltip,
+                        closable: true,
+                        onMouseLeave: function () {
+                            popup.close(self._tooltip);
+                        }
+                    });
+                    self.own(self._imageTooltipContainer);
+                    self._imageTooltipContainer.domNode.classList.add("image-tooltip");
+                    self._imageTooltipContainer.own(self._imageTooltip);
 
-                self.grid.own(self._imageTooltipContainer);
-
+                    self.grid.own(self._imageTooltipContainer);
+                } else {
+                    self._imageTooltip.set("imageUrl", value.publicUrl);
+                    self._imageTooltip.set("content", value);
+                }
                 popup.open({
                     popup: self._imageTooltipContainer,
                     around: node.querySelector("img"),
@@ -95,8 +92,8 @@ define([
 
     var originalOnSelect = ContentList.prototype._onSelect;
     ContentList.prototype._onSelect = function () {
-        if (this.clearTooltip) {
-            this.clearTooltip();
+        if (this.closeTooltip) {
+            this.closeTooltip();
         }
         return originalOnSelect.apply(this, arguments);
     };
@@ -104,8 +101,8 @@ define([
 
     var originalSetQueryAttr = ContentList.prototype._setQueryAttr;
     ContentList.prototype._setQueryAttr = function () {
-        if (this.clearTooltip) {
-            this.clearTooltip();
+        if (this.closeTooltip) {
+            this.closeTooltip();
         }
         return originalSetQueryAttr.apply(this, arguments);
     };
