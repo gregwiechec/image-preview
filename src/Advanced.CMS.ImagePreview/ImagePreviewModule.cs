@@ -49,7 +49,7 @@ public class ImagePreviewViewModel : ModuleViewModel
             foreach (var additionalProperty in additionalProperties)
             {
                 var key = System.Text.Json.JsonNamingPolicy.CamelCase.ConvertName(additionalProperty);
-                var value = _localizationService.GetString("imagepreview/propert/" +
+                var value = _localizationService.GetString("/imagepreview/property/" +
                                                            additionalProperty.ToLowerInvariant(), additionalProperty);
                 yield return new KeyValuePair<string, string>(key, value);
             }
